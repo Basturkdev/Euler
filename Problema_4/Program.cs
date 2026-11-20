@@ -25,21 +25,29 @@ namespace Problema_4
             char[] ArrayNum = AuxString.ToCharArray();
             Array.Reverse(ArrayNum);
             string NumInvertido = new string(ArrayNum);
-            return char.Equals(AuxString, NumInvertido);
+            return string.Equals(AuxString, NumInvertido);
         }
+
+        //static bool EsMayor()
 
         static void RecorridoPalindromo(int NumeroF) // -> 999
         {
-            int IndiceGeneral = 0;
+            int IndiceGeneral = 1;
+            int AuxVar = 0;
             int Respuesta = 0;
             while (IndiceGeneral < NumeroF)
             {
                 int AuxIdx = IndiceGeneral;
-                for (int i = AuxIdx; i < NumeroF; i++)
+                for (int i = AuxIdx; i <= NumeroF; i++)
                 {
                     if (EsPalindromo(IndiceGeneral * i))
                     {
-                        Respuesta = IndiceGeneral*i;
+                        AuxVar = IndiceGeneral*i; //-> 8448, Respuesta = 0
+                        //hacer bloque que mida el mayor.
+                        if (Respuesta < AuxVar)
+                        {
+                            Respuesta = AuxVar;
+                        }
                     }
                 }
                 IndiceGeneral++;
@@ -67,7 +75,9 @@ namespace Problema_4
             Console.WriteLine(EsPalindromo(13195));   // False
             */
 
-            RecorridoPalindromo(99);
+            RecorridoPalindromo(999);
+
+            //La funcion se puede generalizar bastante y hacerlas mas interesante.
 
         }
     }
