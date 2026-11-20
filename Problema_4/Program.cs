@@ -15,12 +15,12 @@ namespace Problema_4
 {
     class Program
     {
-        //Resolucion del ejemplo:
-
-
-
         static bool EsPalindromo(int Palindromo)
         {
+            if (Palindromo == 0)
+            {
+                return false;
+            }
             string AuxString = Palindromo.ToString();
             char[] ArrayNum = AuxString.ToCharArray();
             Array.Reverse(ArrayNum);
@@ -28,24 +28,29 @@ namespace Problema_4
             return char.Equals(AuxString, NumInvertido);
         }
 
-        static void RecorridoPalindromo(int NumeroF)
+        static void RecorridoPalindromo(int NumeroF) // -> 999
         {
-            int Indice = 0;
-            while (Indice < NumeroF)
+            int IndiceGeneral = 0;
+            int Respuesta = 0;
+            while (IndiceGeneral < NumeroF)
             {
-                for (int i = 0; i < NumeroF; i++)
+                int AuxIdx = IndiceGeneral;
+                for (int i = AuxIdx; i < NumeroF; i++)
                 {
-                    //if (())
+                    if (EsPalindromo(IndiceGeneral * i))
                     {
-                        
+                        Respuesta = IndiceGeneral*i;
                     }
                 }
+                IndiceGeneral++;
             }
+            Console.WriteLine("Resultado:" + Respuesta);
         }
 
         //
         static void Main(string[] args)
         {
+            /*
             //pruebas es palindromo
             // 5 pruebas positivas
             Console.WriteLine(EsPalindromo(9009));    // True
@@ -60,6 +65,10 @@ namespace Problema_4
             Console.WriteLine(EsPalindromo(12345));   // False
             Console.WriteLine(EsPalindromo(56789));   // False
             Console.WriteLine(EsPalindromo(13195));   // False
+            */
+
+            RecorridoPalindromo(99);
+
         }
     }
 }
