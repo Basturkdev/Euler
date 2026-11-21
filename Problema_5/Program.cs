@@ -8,6 +8,14 @@ Problema 5:
 ¿Cuál es el número positivo más pequeño que es divisible exactamente por todos los números del 1 al 20?
 */
 
+//Detalles del problema:
+/*
+utilizacion correcta de los ciclos anidados, especialmente while(x){for()}
+especial atencion en la forma que funcionan al momento de interactuar juntas
+ya que la condicion del while no se re-evalua hasta que se cumple por completo
+ciclo for (sin usar break)
+*/
+
 using System;
 namespace Problema_5
 {
@@ -15,7 +23,14 @@ namespace Problema_5
     {
         static bool DivisionResidual(int Dividendo, int Divisor)
         {
-            return (Dividendo % Divisor == 0);
+            if (Dividendo == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return (Dividendo % Divisor == 0);
+            }
         }
         static int RecorridoDivisor(int CantDivisores)
         {
@@ -40,9 +55,31 @@ namespace Problema_5
             }
             return IndiceRecorrido - 2;
         }
+        static void RecorridoV2(int NumeroUsuario)
+        {
+            int NumeroActual = 0; //-> Numero general, el valor de retorno
+            int ContadorDivisores = 0;
+            while (ContadorDivisores < NumeroUsuario) //Condicion externa
+            {
+                for (int i = 1; i < NumeroUsuario + 1; i++) //Condicion interna
+                {
+                    if (DivisionResidual(NumeroActual, i))
+                    {
+                        ContadorDivisores++; //-> Aumento
+                    }else
+                    {
+                        ContadorDivisores = 0;
+                        break;
+                    }
+                }
+                NumeroActual++;
+            }
+            Console.WriteLine(NumeroActual);
+        }
         static void Main(string[] args)
         {
-            Console.WriteLine("Respuesta: " + RecorridoDivisor(10));
+            //Console.WriteLine("Respuesta: " + RecorridoDivisor(20));
+            RecorridoV2(20);
         }
     }
 }
