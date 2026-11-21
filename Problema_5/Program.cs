@@ -32,30 +32,7 @@ namespace Problema_5
                 return (Dividendo % Divisor == 0);
             }
         }
-        static int RecorridoDivisor(int CantDivisores)
-        {
-            int IndiceRecorrido = 1;
-            int AuxContador = 0;
-            while (AuxContador < CantDivisores)
-            {
-                for (int i = 1; i < CantDivisores; i++)
-                {
-                    if (!DivisionResidual(IndiceRecorrido,i))
-                    {
-                        AuxContador = 0;
-                        break;
-                    }
-                    AuxContador++;
-                    if (AuxContador == CantDivisores)
-                    {
-                        break;
-                    }
-                }
-                IndiceRecorrido++;
-            }
-            return IndiceRecorrido - 2;
-        }
-        static void RecorridoV2(int NumeroUsuario)
+        static int RecorridoV2(int NumeroUsuario)
         {
             int NumeroActual = 0; //-> Numero general, el valor de retorno
             int ContadorDivisores = 0;
@@ -72,14 +49,18 @@ namespace Problema_5
                         break;
                     }
                 }
+                if (ContadorDivisores == NumeroUsuario)
+                {
+                    break;
+                }
                 NumeroActual++;
             }
-            Console.WriteLine(NumeroActual);
+            return NumeroActual;
         }
         static void Main(string[] args)
         {
-            //Console.WriteLine("Respuesta: " + RecorridoDivisor(20));
-            RecorridoV2(20);
+            Console.WriteLine("Respuesta: " + RecorridoV2(20));
+            //RecorridoV2(20);
         }
     }
 }
