@@ -23,29 +23,35 @@ namespace Problema_6
 {
     class Program
     {
-        static void RecorridoPotencia(int RangoN, int Potencia)
+        static int RecorridoPotencia(int RangoN, int Potencia)  //-> Funciona para diferentes potencias y N-Rango
         {
             double AcumuladorCuadrado = 0;
-            for (int i = 0; i <= RangoN; i++)
+            for (int i = 0; i <= RangoN; i++)   
             {
-                AcumuladorCuadrado += Math.Pow(i, Potencia);
+                AcumuladorCuadrado += Math.Pow(i, Potencia);    //-> se puede evitar usar Math, usando X += i * i
             }
-            Console.WriteLine(AcumuladorCuadrado);
+            int ResultadoRecorrido = (int)AcumuladorCuadrado;   //-> Se castea de double a int
+            return ResultadoRecorrido;
         }
-        static void SumaPotencia(int RangoN, int Potencia)
+        static int SumaPotencia(int RangoN, int Potencia)
         {
-            int SumatoriaCuadrado = 0;
+            int Sumatoria = 0;
             for (int i = 0; i <= RangoN; i++)
             {
-                SumatoriaCuadrado += i;
+                Sumatoria += i;
             }
-            double Resultado = Math.Pow(SumatoriaCuadrado, Potencia);
-            Console.WriteLine(Resultado);
+            double SumatoriaCuadrado = Math.Pow(Sumatoria, Potencia);
+            return (int)SumatoriaCuadrado;
+        }
+        static int Diferencia(int Recorrido, int Sumatoria)
+        {
+            return Sumatoria - Recorrido;
         }
         static void Main(string[] args)
         {
-            RecorridoPotencia(10,2);
-            SumaPotencia(10,2);
+            int X = RecorridoPotencia(100,2);
+            int Y = SumaPotencia(100,2);
+            Console.WriteLine("Diferencia: " + Diferencia(X,Y));
         }
     }
 }
