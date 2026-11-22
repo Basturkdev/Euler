@@ -23,6 +23,29 @@ namespace Problema_6
 {
     class Program
     {
-        static void Main(string[] args){}
+        static void RecorridoPotencia(int RangoN, int Potencia)
+        {
+            double AcumuladorCuadrado = 0;
+            for (int i = 0; i <= RangoN; i++)
+            {
+                AcumuladorCuadrado += Math.Pow(i, Potencia);
+            }
+            Console.WriteLine(AcumuladorCuadrado);
+        }
+        static void SumaPotencia(int RangoN, int Potencia)
+        {
+            int SumatoriaCuadrado = 0;
+            for (int i = 0; i <= RangoN; i++)
+            {
+                SumatoriaCuadrado += i;
+            }
+            double Resultado = Math.Pow(SumatoriaCuadrado, Potencia);
+            Console.WriteLine(Resultado);
+        }
+        static void Main(string[] args)
+        {
+            RecorridoPotencia(10,2);
+            SumaPotencia(10,2);
+        }
     }
 }
