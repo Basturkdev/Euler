@@ -30,6 +30,7 @@ Number/Numero:
 */
 
 using System;
+using System.Text;
 namespace Problema_8
 {
     class Program
@@ -57,11 +58,40 @@ namespace Problema_8
         71636269561882670428252483600823257530420752963450
         """.Replace("\n", "").Replace("\r", "");
         //============================================================================
+        static bool ProductoCero(string Numero) //-> Revisa si hay cero en un numero de n-digitos
+        {
+            //Hacer cambios en esta funcion para que realice el producto al momento de evaluar
+            for (int i = 0; i < Numero.Length; i++)
+            {
+                if (Numero[i] == '0')
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         static void ProductoAdyacente(string NumeroIngresado, int CantidadAdyacencia)
         {
             int Resultado = 0;
             int IndiceRecorrido = 0;
-            //Idea en progreso
+            for (int i = 0; i < NumeroIngresado.Length; i++)    //Ciclo de inicio, toma el nro inicial de cada grupo
+            {
+                var SBAux = new StringBuilder();
+                for (int IndexChar = 0; IndexChar < CantidadAdyacencia; IndexChar++)
+                {
+                    SBAux.Append(NumeroIngresado[IndexChar]);   //-> Se agtrega cada caracter por iteracion
+                }
+                //Se sale del ciclo para continuar trabajando sobre el numero
+                string AuxNumero = SBAux.ToString();
+                if (ProductoCero(AuxNumero))    //-> Si es true, hay un numero '0' entre los digitos del numero
+                {
+                    break;
+                }else
+                {
+                    int AuxComparador = 0;
+
+                }
+            }
         }
         static void Main(string[] args)
         {
