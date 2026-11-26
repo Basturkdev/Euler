@@ -36,9 +36,9 @@ namespace Problema_8
     class Program
     {
         //============================================================================
-        static int ProductoCero(string Numero) //-> Revisa si hay cero en un numero de n-digitos
+        static long ProductoCero(string Numero) //-> Revisa si hay cero en un numero de n-digitos
         {
-            int Producto = 1;
+            long Producto = 1;
             for (int i = 0; i < Numero.Length; i++)
             {
                 if (Numero[i] == '0')
@@ -50,11 +50,11 @@ namespace Problema_8
             }
             return Producto;
         }
-        static void ProductoAdyacente(string NumeroIngresado, int CantidadAdyacencia)
+        static long ProductoAdyacente(string NumeroIngresado, int CantidadAdyacencia)
         {
-            int Resultado = 0;
+            long Resultado = 0;
             //int IndiceRecorrido = 0;
-            for (int i = 0; i < NumeroIngresado.Length; i++)    //Ciclo de inicio, toma el nro inicial de cada grupo
+            for (int i = 0; i < NumeroIngresado.Length - CantidadAdyacencia; i++)    //Ciclo de inicio, toma el nro inicial de cada grupo
             {
                 var SBAux = new StringBuilder();
                 for (int IndexChar = i; IndexChar < CantidadAdyacencia + i; IndexChar++)
@@ -63,7 +63,7 @@ namespace Problema_8
                 }
                 //Se sale del ciclo para continuar trabajando sobre el numero
                 string AuxNumero = SBAux.ToString();
-                int AuxVarNumeric = ProductoCero(AuxNumero);    //Asignacion de producto
+                long AuxVarNumeric = ProductoCero(AuxNumero);    //Asignacion de producto
                 //condicion con tryParse: bool NroValido = int.TryParse(AuxNumero, out AuxVarNumeric);
                 if (AuxVarNumeric != 0)
                 {
@@ -75,6 +75,7 @@ namespace Problema_8
                 }
             }
             Console.WriteLine("Respuesta: " + Resultado);
+            return Resultado;
         }
         static void Main(string[] args)
         {
@@ -104,7 +105,7 @@ namespace Problema_8
 
 
             //Console.WriteLine(ProductoCero("55555"));
-            ProductoAdyacente(Numero,13);
+            Console.WriteLine(ProductoAdyacente(Numero,13));
         }
     }
 }
