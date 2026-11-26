@@ -58,17 +58,18 @@ namespace Problema_8
         71636269561882670428252483600823257530420752963450
         """.Replace("\n", "").Replace("\r", "");
         //============================================================================
-        static bool ProductoCero(string Numero) //-> Revisa si hay cero en un numero de n-digitos
+        static int ProductoCero(string Numero) //-> Revisa si hay cero en un numero de n-digitos
         {
-            //Hacer cambios en esta funcion para que realice el producto al momento de evaluar
+            int Producto = 0;
             for (int i = 0; i < Numero.Length; i++)
             {
                 if (Numero[i] == '0')
                 {
-                    return true;
+                    return 0;
                 }
+                Producto *= Numero[i];
             }
-            return false;
+            return Producto;
         }
         static void ProductoAdyacente(string NumeroIngresado, int CantidadAdyacencia)
         {
@@ -77,25 +78,23 @@ namespace Problema_8
             for (int i = 0; i < NumeroIngresado.Length; i++)    //Ciclo de inicio, toma el nro inicial de cada grupo
             {
                 var SBAux = new StringBuilder();
-                for (int IndexChar = 0; IndexChar < CantidadAdyacencia; IndexChar++)
+                for (int IndexChar = i; IndexChar < CantidadAdyacencia; IndexChar++)
                 {
                     SBAux.Append(NumeroIngresado[IndexChar]);   //-> Se agtrega cada caracter por iteracion
                 }
                 //Se sale del ciclo para continuar trabajando sobre el numero
                 string AuxNumero = SBAux.ToString();
-                if (ProductoCero(AuxNumero))    //-> Si es true, hay un numero '0' entre los digitos del numero
+                int AuxVarNumeric = int.Parse(AuxNumero);   //-> Parse porque sabemos que todos son numeros
+                //condicion con tryParse: bool NroValido = int.TryParse(AuxNumero, out AuxVarNumeric);
+                if (ProductoCero("po") != 0)
                 {
-                    break;
-                }else
-                {
-                    int AuxComparador = 0;
-
+                    
                 }
             }
         }
         static void Main(string[] args)
         {
-            
+            Console.WriteLine(ProductoCero("55555"));
         }
     }
 }
