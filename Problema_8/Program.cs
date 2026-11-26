@@ -75,23 +75,28 @@ namespace Problema_8
         static void ProductoAdyacente(string NumeroIngresado, int CantidadAdyacencia)
         {
             int Resultado = 0;
-            int IndiceRecorrido = 0;
+            //int IndiceRecorrido = 0;
             for (int i = 0; i < NumeroIngresado.Length; i++)    //Ciclo de inicio, toma el nro inicial de cada grupo
             {
                 var SBAux = new StringBuilder();
-                for (int IndexChar = i; IndexChar < CantidadAdyacencia; IndexChar++)
+                for (int IndexChar = i; IndexChar < CantidadAdyacencia + i; IndexChar++)
                 {
                     SBAux.Append(NumeroIngresado[IndexChar]);   //-> Se agtrega cada caracter por iteracion
                 }
                 //Se sale del ciclo para continuar trabajando sobre el numero
                 string AuxNumero = SBAux.ToString();
-                int AuxVarNumeric = int.Parse(AuxNumero);   //-> Parse porque sabemos que todos son numeros
+                int AuxVarNumeric = ProductoCero(AuxNumero);    //Asignacion de producto
                 //condicion con tryParse: bool NroValido = int.TryParse(AuxNumero, out AuxVarNumeric);
-                if (ProductoCero("po") != 0)
+                if (AuxVarNumeric != 0)
                 {
-                    
+                    //Se procede a hacer la comparacion
+                    if (Resultado < AuxVarNumeric)
+                    {
+                        Resultado = AuxVarNumeric;
+                    }
                 }
             }
+            Console.WriteLine("Respuesta: " + Resultado);
         }
         static void Main(string[] args)
         {
