@@ -60,14 +60,15 @@ namespace Problema_8
         //============================================================================
         static int ProductoCero(string Numero) //-> Revisa si hay cero en un numero de n-digitos
         {
-            int Producto = 0;
+            int Producto = 1;
             for (int i = 0; i < Numero.Length; i++)
             {
                 if (Numero[i] == '0')
                 {
                     return 0;
                 }
-                Producto *= Numero[i];
+                int AuxVar = Numero[i] - '0';
+                Producto *= AuxVar;
             }
             return Producto;
         }
